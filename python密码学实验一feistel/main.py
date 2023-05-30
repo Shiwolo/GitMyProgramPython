@@ -21,14 +21,14 @@ def FeistelBalance(key, text='-1', ):
     encodetext = ''
     # 每64bit(8位字符进行)加密
     for i in range(len(text) // 8):
-        temptext = text[i * 8: i * 8 + 8]
+        temptext = text[i * 8:i * 8 + 8]
         L = temptext[:4]
         R = temptext[4:]
         for j in key:
             tempR = R
-            result = ''#圈函数
+            result = ''  # 圈函数
             for k in range(4):
-                result += chr(ord(L[k]) ^ ord(tempR[k]) ^ (ord(j)+1))
+                result += chr(ord(L[k]) ^ ord(tempR[k]) ^ (ord(j) + 1))
             R = result
             L = tempR
         encodetext += R + L
